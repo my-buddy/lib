@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/my-buddy/lib/issues"
   },
-  "homepage": "https://github.com/my-buddy/lib#readme"
+  "homepage": "https://github.com/my-buddy/lib#readme",
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "winston": "^2.2.0"
+  }
 }
