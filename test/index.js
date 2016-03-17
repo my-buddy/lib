@@ -1,3 +1,4 @@
-/**
- * Created by mbret on 17/03/2016.
- */
+var Logger = require('../lib/logger').Logger;
+
+var logger = new Logger();
+logger.getLogger('test').info('coucou');
