@@ -1,3 +1,1 @@
-/**
- * Created by mbret on 17/03/2016.
- */
+exports.logger = require('./lib/logger');
