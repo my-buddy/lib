@@ -1,5 +1,8 @@
-var Scheduler = require('../lib/scheduler/index.js').scheduler;
-
+var path = require('path');
+var scheduler = require(path.resolve(__dirname, '../lib/scheduler/index'));
+var Scheduler = scheduler.Scheduler;
+var _ = require('lodash');
+var nodeSchedule = require('node-schedule');
 var scheduler = new Scheduler();
 
 var schedules = {
@@ -18,13 +21,14 @@ var schedules = {
     // moment now with js date
     momentNowWithDate: {
         method: 'moment',
-        when: new Date()
+        date: new Date()
     },
 
     // every day at 01:00
-    everyDayAtOne: {
+    everyDayAtSpecificHour: {
         method: 'moment',
-        when: ['01', 'HH']
+        hour: 19,
+        minute: 11
     },
 
     // every 2nd day of months at 00:00
@@ -44,9 +48,22 @@ var schedules = {
     }
 };
 
-scheduler.subscribe(schedules.from12to13, function(event){
-    console.log('zbla', event);
+var rule = new nodeSchedule.RecurrenceRule();
+console.log(rule);
+//rule.date = new Date();
+var job = nodeSchedule.scheduleJob((new Date()).setSeconds(30), function(){
+    console.log('coucou');
 });
+console.log(job.nextInvocation().toString());
+
+//var process = scheduler.subscribe(schedules.everyDayAtSpecificHour, function(event){
+//    console.log('zbla', event);
+//    console.log('next invocation ', process.nextInvocation().toString());
+//});
+//
+//console.log('next invocation ', process.nextInvocation().toString());
+//
+//console.log(require('util').inspect(process.nextInvocation().toString()));
 
 // Every monday and thursday at 01:00
 //var schedule = scheduler.subscribe({
