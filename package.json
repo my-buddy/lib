@@ -25,6 +25,7 @@
     "node-schedule": "^1.1.0",
     "require-all": "^2.0.0",
     "sequelize": "^3.21.0",
+    "uuid-js": "^0.7.5",
     "winston": "^2.2.0"
   }
 }
